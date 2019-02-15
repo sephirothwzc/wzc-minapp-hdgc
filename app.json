@@ -1,12 +1,13 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/logs/logs"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "pages": ["pages/index/index", "pages/logs/logs", "pages/welcome/welcome"],
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "van-toast": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/toast/index",
+    "van-button": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/button/index"
   }
 }
