@@ -1,2 +1,28 @@
 <!--pages/integral/integral.wxml-->
-<text>pages/integral/integral.wxml</text>
+<div>
+  <van-cell-group>
+    <van-cell size="large" title="点心奖分【{{ userInfo.integralKDS.integral }}】  雪糕奖分【{{ userInfo.integralJIC.integral }}】" />
+    <van-cell title="兑换" value="{{ changeType.text }}" is-link arrow-direction="down" bind:click="selChangeType" />
+    <!-- <van-cell title="数量" label="1点心 = 2雪糕">
+    </van-cell> -->
+    <van-field
+      value="{{ changeNumber }}"
+      required
+      label="兑换数量"
+      icon="question-o"
+      placeholder="请输入要兑换的奖分数量"
+      bind:click-icon="onClickIcon"
+      type="number"
+      error="{{changeNumberError}}"
+      error-message="{{errorMessage}}"
+      bind:change="numberChange"
+  />
+  </van-cell-group>
+  <view class="view">
+      <van-button loading="{{loading}}" disabled="{{ changeNumberError }}" custom-class="submitbutton" size="large" round type="primary" bind:click="onSubmit">发起兑换</van-button>
+  </view>
+  <van-popup show="{{ showCT }}" position="bottom" bind:close="onClose">
+    <van-picker  show-toolbar columns="{{ columns }}" bind:cancel="onClose" bind:confirm="onConfirm" />
+  </van-popup>
+  <van-toast id="van-toast" />
+</div>

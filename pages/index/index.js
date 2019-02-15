@@ -17,7 +17,7 @@ Page({
     });
   },
   onLoad: function() {
-    if (app.globalData.userInfo || this.data.canIUse) {
+    if (app.globalData.userInfo && this.data.canIUse) {
       this.wxlogin();
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -55,14 +55,10 @@ Page({
   // 获取积分
   setMsg() {
     let msg;
-    if (this.data.userInfo.allIntegral) {
+    if (!this.data.userInfo.newIs) {
       msg = `欢迎您再次光临，您的当前\r\n点心奖分【${
-        this.data.userInfo.allIntegral.filter(p => p.integral_type === 'KDS')[0]
-          .sum
-      }】\r\n雪糕奖分【${
-        this.data.userInfo.allIntegral.filter(p => p.integral_type === 'JIC')[0]
-          .sum
-      }】`;
+        this.data.userInfo.integralKDS.integral
+      }】\r\n雪糕奖分【${this.data.userInfo.integralJIC.integral}】`;
     } else if (
       this.data.userInfo.integralKDS &&
       this.data.userInfo.integralJIC

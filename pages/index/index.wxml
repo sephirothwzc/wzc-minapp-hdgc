@@ -20,15 +20,8 @@
   </view>
   <view class="usermotto">
     <text class="user-motto">{{ motto }}</text>
-    <button
-      type="primary"
-      wx:if="{{ hasUserInfo && canIUse }}"
-      bindtap="toIntegral"
-    >
+    <button type="primary" wx:if="{{ hasUserInfo }}" bindtap="toIntegral">
       积分兑换
     </button>
-    <!-- <navigator url="/pages/welcome/welcome" hover-class="navigator-hover">
-      跳转到新页面
-    </navigator> -->
   </view>
 </view>

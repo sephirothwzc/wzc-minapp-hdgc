@@ -1,1 +1,7 @@
 /* pages/integral/integral.wxss */
+.view {
+  align-items: center;
+}
+.submitbutton {
+  padding: 15;
+}
