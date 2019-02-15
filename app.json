@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/index/index", "pages/logs/logs", "pages/welcome/welcome"],
+  "pages": ["pages/index/index", "pages/logs/logs", "pages/integral/integral"],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -8,6 +8,8 @@
   },
   "usingComponents": {
     "van-toast": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/toast/index",
-    "van-button": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/button/index"
+    "van-button": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/button/index",
+    "van-row": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/row/index",
+    "van-col": "/miniprogram_npm/_vant-weapp@0.5.3@vant-weapp/col/index"
   }
 }

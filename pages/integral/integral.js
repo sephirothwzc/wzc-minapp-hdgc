@@ -1,4 +1,4 @@
-// pages/welcome/welcome.js
+// pages/integral/integral.js
 Page({
 
   /**

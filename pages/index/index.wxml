@@ -19,8 +19,14 @@
     </block>
   </view>
   <view class="usermotto">
-    <van-button type="primary">积分兑换</van-button>
     <text class="user-motto">{{ motto }}</text>
+    <button
+      type="primary"
+      wx:if="{{ hasUserInfo && canIUse }}"
+      bindtap="toIntegral"
+    >
+      积分兑换
+    </button>
     <!-- <navigator url="/pages/welcome/welcome" hover-class="navigator-hover">
       跳转到新页面
     </navigator> -->

@@ -17,37 +17,24 @@ Page({
     });
   },
   onLoad: function() {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      });
-      this.setMsg();
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        });
-        this.setMsg();
-      };
+    if (app.globalData.userInfo || this.data.canIUse) {
+      this.wxlogin();
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo;
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          });
+          this.wxlogin();
         }
       });
     }
   },
   getUserInfo: function(e) {
     app.globalData.userInfo = e.detail.userInfo;
+    this.wxlogin();
+  },
+  // 获取openid 调用app
+  wxlogin() {
     if (!app.userInfoReadyCallback) {
       app.userInfoReadyCallback = res => {
         this.setData({
@@ -76,13 +63,22 @@ Page({
         this.data.userInfo.allIntegral.filter(p => p.integral_type === 'JIC')[0]
           .sum
       }】`;
-    } else {
+    } else if (
+      this.data.userInfo.integralKDS &&
+      this.data.userInfo.integralJIC
+    ) {
       msg = `感谢您的注册，系统赠送您!\r\n点心奖分【${
         this.data.userInfo.integralKDS.integral
       }】\r\n雪糕奖分【${this.data.userInfo.integralJIC.integral}】！`;
     }
     this.setData({
       motto: msg
+    });
+  },
+  // 跳转积分兑换页面
+  toIntegral() {
+    wx.navigateTo({
+      url: '../integral/integral'
     });
   }
 });
