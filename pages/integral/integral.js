@@ -113,7 +113,8 @@ Page({
     }
     this.setData({
       changeNumberError: false,
-      errorMessage: ''
+      errorMessage: '',
+      changeNumber: value.detail
     });
   },
   onSubmit() {
@@ -135,11 +136,7 @@ Page({
         let second = 3;
         const timer = setInterval(() => {
           second--;
-          if (second) {
-            Toast.setData({
-              message: `兑换发布成功！请耐心等待一下！倒计时 ${second} 秒`
-            });
-          } else {
+          if (!second) {
             clearInterval(timer);
             Toast.clear();
             wx.navigateBack({
